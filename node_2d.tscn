@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://1a7ymbjxlk65"]
+[gd_scene load_steps=23 format=3 uid="uid://1a7ymbjxlk65"]
 
 [ext_resource type="Texture2D" uid="uid://bdntql3i1i3ai" path="res://Gorila.png" id="1_hw2kq"]
 [ext_resource type="Texture2D" uid="uid://u5w1ox56srxf" path="res://fundo do jogo.png" id="2_bouhm"]
 [ext_resource type="Texture2D" uid="uid://baj6g7x0ykudi" path="res://Sol.png" id="3_0ha6x"]
 [ext_resource type="Texture2D" uid="uid://bq4gyiennwc5c" path="res://Captura de tela 2024-09-27 100501.png" id="3_to5j7"]
+[ext_resource type="Script" path="res://character_body_2d_2.gd" id="4_sce12"]
 [ext_resource type="Texture2D" uid="uid://bpv0sjef86puw" path="res://Captura de tela 2024-09-27 100947.png" id="4_w4eev"]
+[ext_resource type="Texture2D" uid="uid://c6ydl506ppo65" path="res://Banana.png" id="4_xa4er"]
 [ext_resource type="Texture2D" uid="uid://y1613mwoarr3" path="res://Captura de tela 2024-09-27 100816.png" id="5_mjlne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkikg"]
@@ -12,6 +14,9 @@ size = Vector2(57.5, 60)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wg74e"]
 radius = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb48p"]
+size = Vector2(29, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u50ft"]
 size = Vector2(96, 270)
@@ -53,7 +58,7 @@ platform_floor_layers = 4294967294
 
 [node name="FundoDoJogo" type="Sprite2D" parent="CharacterBody2D"]
 visibility_layer = 2
-position = Vector2(577, 320)
+position = Vector2(582, 322)
 scale = Vector2(7.24375, 6.88298)
 texture = ExtResource("2_bouhm")
 
@@ -89,8 +94,33 @@ top_level = true
 position = Vector2(566, 87)
 shape = SubResource("CircleShape2D_wg74e")
 
+[node name="Banana2" type="CharacterBody2D" parent="."]
+platform_floor_layers = 4294967294
+
+[node name="Banana" type="Sprite2D" parent="Banana2"]
+position = Vector2(1099, 331)
+scale = Vector2(0.122951, 0.131336)
+texture = ExtResource("4_xa4er")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Banana2"]
+position = Vector2(1100, 331)
+shape = SubResource("RectangleShape2D_bb48p")
+
+[node name="Banana3" type="CharacterBody2D" parent="."]
+platform_floor_layers = 4294967294
+
+[node name="Banana" type="Sprite2D" parent="Banana3"]
+position = Vector2(1099, 331)
+scale = Vector2(0.122951, 0.131336)
+texture = ExtResource("4_xa4er")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Banana3"]
+position = Vector2(36, 407)
+shape = SubResource("RectangleShape2D_bb48p")
+
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 platform_floor_layers = 4294967294
+script = ExtResource("4_sce12")
 
 [node name="Gorila" type="Sprite2D" parent="CharacterBody2D2"]
 top_level = true
@@ -102,6 +132,45 @@ texture = ExtResource("1_hw2kq")
 top_level = true
 position = Vector2(32, 423)
 shape = SubResource("RectangleShape2D_gkikg")
+
+[node name="nome" type="Label" parent="CharacterBody2D2"]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 79.0
+offset_bottom = 38.0
+text = "Nome: "
+
+[node name="Velocidade" type="Label" parent="CharacterBody2D2"]
+offset_left = 8.0
+offset_top = 44.0
+offset_right = 101.0
+offset_bottom = 75.0
+text = "Velocidade: "
+
+[node name="Angulo" type="Label" parent="CharacterBody2D2"]
+offset_left = 8.0
+offset_top = 78.0
+offset_right = 101.0
+offset_bottom = 109.0
+text = "Angulo: "
+
+[node name="nomeInput" type="LineEdit" parent="CharacterBody2D2"]
+offset_left = 63.0
+offset_top = 4.0
+offset_right = 284.0
+offset_bottom = 35.0
+
+[node name="velocidadeInput" type="LineEdit" parent="CharacterBody2D2"]
+offset_left = 101.0
+offset_top = 40.0
+offset_right = 178.0
+offset_bottom = 71.0
+
+[node name="anguloInput" type="LineEdit" parent="CharacterBody2D2"]
+offset_left = 73.0
+offset_top = 78.0
+offset_right = 150.0
+offset_bottom = 109.0
 
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
 
